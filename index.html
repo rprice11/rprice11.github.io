@@ -25,7 +25,16 @@ Open Kiosk
 </button>
 
 
+<?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.watchmode.com/v1/sources/?apiKey=9S3AloELLIuFVuRKlLHvYecPV1LGpoacTUyzeT4c');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$response = curl_exec($ch);
+curl_close($ch);
 
+$json = json_decode($response);
+print_r($json);
 
 </body>
 </html>

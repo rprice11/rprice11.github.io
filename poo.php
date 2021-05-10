@@ -1,0 +1,44 @@
+<html>
+<head>
+
+<script>
+function openPopup()
+{
+	var popup = window.open("kiosk.html", "popup", "fullscreen");
+  if (popup.outerWidth < screen.availWidth || popup.outerHeight < screen.availHeight)
+  {
+  	popup.moveTo(0,0);
+  	popup.resizeTo(screen.availWidth, screen.availHeight);
+  }
+}
+</script>
+</head>
+<body>
+
+<H1>JMS One</h1>
+
+	<p> The below functionality would appear from a menu item withing JMS One. This button is as example only.</p>
+	
+<p>If you would like to open a kiosk click here  </p>
+<button onclick="openPopup()">
+Open Kiosk
+</button>
+
+
+<?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.watchmode.com/v1/sources/?apiKey=9S3AloELLIuFVuRKlLHvYecPV1LGpoacTUyzeT4c');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$response = curl_exec($ch);
+curl_close($ch);
+
+$json = json_decode($response);
+print_r($json);
+
+<button onclick="curl_init()">
+Open ses
+</button>
+
+</body>
+</html>
